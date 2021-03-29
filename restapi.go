@@ -5,7 +5,6 @@ import (
 
 	"github.com/jinzhu/gorm"
 	"github.com/murali590/restapi/config"
-	"github.com/murali590/restapi/model"
 	"github.com/murali590/restapi/rest"
 )
 
@@ -17,13 +16,13 @@ func main() {
 	config.DB, err = gorm.Open("mysql", config.DbConnectionString(config.BuildDBConfig()))
 
 	if err != nil {
-		fmt.Println("Error Connecting to Inflix DB: ", err)
+		fmt.Println("Error Connecting to mydb DB: ", err)
 	}
 
 	defer config.DB.Close()
 
 	// run the migrations: album struct
-	config.DB.AutoMigrate(&model.Album{})
+	config.DB.AutoMigrate(&model.user{})
 
 	//setup routes
 	r := rest.SetupRouter()
