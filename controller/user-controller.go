@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Eswaraa/inflix/service"
+	"github.com/Eswaraa/restapi/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,22 +22,22 @@ func Getusers(c *gin.Context) {
 
 //Createuser - Create an user
 func Createuser(c *gin.Context) {
-	var users model.user
-	// var mapAlbum map[string]interface{}
-	if c.BindJSON(&user) == nil {
-		log.Println(album.Title)
-		log.Println(album.Release)
-		log.Println(album.Production)
-		log.Println(album.Director)
-		log.Println(album.IsPremium)
+	var us model.user
+	// var mapuser map[string]interface{}
+	if c.BindJSON(&us) == nil {
+		log.Println(us.userid)
+		log.Println(us.password)
+		log.Println(us.name)
+		log.Println(us.date_of_birth)
+		log.Println(us.address)
 	} else {
 		log.Println("Error in binding")
 	}
 
-	err := service.CreateAlbum(&album)
+	err := service.Createuser(&us)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
-		c.JSON(http.StatusOK, album)
+		c.JSON(http.StatusOK, us)
 	}
 }

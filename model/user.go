@@ -1,7 +1,7 @@
 package model
 
 import (
-	"D:\restapi\util"
+	"github.com/murali590/restapi/util"
 	"gorm.io/gorm"
 )
 
